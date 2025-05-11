@@ -1,4 +1,10 @@
 .main {
   min-height: $main-height;
-  padding-bottom: 50px;
+  padding: 25px;
+
+  &:has(div[data-center="true"]) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

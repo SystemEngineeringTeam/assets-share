@@ -1,9 +1,26 @@
 .button {
   padding: 8px 16px;
   font-size: $fontsize-md;
-  color: $color-on-primary;
-  background-color: $color-primary;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: all 0.3s ease;
+
+  &[data-variant="primary"] {
+    color: $color-on-primary;
+    background-color: $color-primary;
+
+    &:hover {
+      background-color: color-mix(in srgb, $color-primary, white 20%);
+    }
+  }
+
+  &[data-variant="ghost"] {
+    color: $color-text;
+    background-color: $color-background-dark;
+
+    &:hover {
+      background-color: color-mix(in srgb, $color-background-dark, black 10%);
+    }
+  }
 }

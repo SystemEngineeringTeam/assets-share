@@ -11,15 +11,13 @@ if (!root) throw new Error('Root element not found');
 const DOMAIN = import.meta.env.VITE_AUTH0_DOMAIN;
 const CLIENT_ID = import.meta.env.VITE_AUTH0_CLIENT_ID;
 
-const callbackUrl = new URL('callback', window.location.href);
-
 createRoot(root).render(
   <StrictMode>
     <Auth0Provider
       domain={DOMAIN}
       clientId={CLIENT_ID}
       authorizationParams={{
-        redirect_uri: callbackUrl.toString(),
+        redirect_uri: window.location.origin,
       }}
     >
       <RouterProvider router={router} />

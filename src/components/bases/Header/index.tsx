@@ -5,13 +5,15 @@ import { useAuth0 } from '@auth0/auth0-react';
 import LogoutButton from '@/components/shares/LogoutButton';
 import LoginButton from '@/components/shares/LoginButton';
 import Loading from '@/components/shares/Loading';
+import Avatar from '@/components/ui/Avatar';
+import Popover from '@/components/ui/Popover';
 
 interface Props {
   fixed?: boolean;
 }
 
 export default function Header({ fixed }: Props): ReactElement {
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, user, isLoading } = useAuth0();
 
   return (
     <header className={styles.header} data-fixed={fixed}>
@@ -21,8 +23,12 @@ export default function Header({ fixed }: Props): ReactElement {
       </a>
 
       <nav className={styles.nav}>
+        {user && (
+          <Popover trigger={<Avatar user={user} />}>
+            <LogoutButton variant="ghost" />
+          </Popover>
+        )}
         {isLoading && <Loading />}
-        {!isLoading && isAuthenticated && <LogoutButton />}
         {!isLoading && !isAuthenticated && <LoginButton />}
       </nav>
     </header>
