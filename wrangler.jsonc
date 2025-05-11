@@ -4,7 +4,7 @@
  */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "assets-share",
+  "name": "assets-share-front",
   "main": "worker/index.ts",
   "compatibility_date": "2025-05-10",
   "assets": {
