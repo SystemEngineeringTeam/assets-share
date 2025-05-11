@@ -2,13 +2,27 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router';
 import { router } from './router';
+import { Auth0Provider } from '@auth0/auth0-react';
 import '@/styles/globals.scss';
 
 const root = document.getElementById('root');
 if (!root) throw new Error('Root element not found');
 
+const DOMAIN = import.meta.env.VITE_AUTH0_DOMAIN;
+const CLIENT_ID = import.meta.env.VITE_AUTH0_CLIENT_ID;
+
+const callbackUrl = new URL('callback', window.location.href);
+
 createRoot(root).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Auth0Provider
+      domain={DOMAIN}
+      clientId={CLIENT_ID}
+      authorizationParams={{
+        redirect_uri: callbackUrl.toString(),
+      }}
+    >
+      <RouterProvider router={router} />
+    </Auth0Provider>
   </StrictMode>,
 );

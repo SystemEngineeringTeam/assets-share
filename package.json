@@ -13,6 +13,8 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.3.0",
+    "classnames": "^2.5.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "^7.6.0"
