@@ -8,11 +8,14 @@ interface Props {
 
 export default function Avatar({ user }: Props) {
   return (
-    <RadixAvatar.Root className={styles.root}>
-      <RadixAvatar.Image className={styles.img} src={user.picture} alt="Icon" />
-      <RadixAvatar.Fallback className={styles.fallback} delayMs={600}>
-        {user.name}
-      </RadixAvatar.Fallback>
-    </RadixAvatar.Root>
+    <div className={styles.avatar}>
+      <RadixAvatar.Root className={styles.root}>
+        <RadixAvatar.Image className={styles.img} src={user.picture} alt="Icon" />
+        <RadixAvatar.Fallback className={styles.fallback} delayMs={600}>
+          {user.name}
+        </RadixAvatar.Fallback>
+      </RadixAvatar.Root>
+      <p>{user.nickname}</p>
+    </div>
   );
 }
