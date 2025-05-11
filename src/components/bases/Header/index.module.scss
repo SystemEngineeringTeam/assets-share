@@ -1,0 +1,36 @@
+.header {
+  height: $header-height;
+  padding-inline: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba($color: $color-background, $alpha: 0.5);
+  border-bottom: dashed 1px $color-border;
+  z-index: 1000;
+
+  &[data-fixed="true"] {
+    position: fixed;
+  }
+
+  .title_container {
+    display: contents;
+
+    .icon {
+      height: 20px;
+    }
+
+    .title {
+      font-size: $fontsize-md;
+      font-weight: bold;
+      color: $color-text;
+
+      @include mobile {
+        font-size: $fontsize-md;
+      }
+    }
+  }
+}
